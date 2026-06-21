@@ -1,0 +1,424 @@
+/* Paul Manaay - Portfolio.
+   "Refined mono-editorial" - pure-white ground, monospace display + chrome,
+   light grotesque body. Monochrome by design: colour comes ONLY from the work
+   imagery, never the UI. Design language after guipasculli.com. Mobile-first.
+   Add to <head> of BOTH index.html and mmu/index.html:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+   (Courier Prime = the free web match for guipasculli.com's Courier PS typewriter mono.)
+*/
+
+:root{
+  /* Ground & ink - monochrome, warm charcoal on pure white */
+  --bg:#ffffff;            /* pure white page (faithful to the reference) */
+  --panel:#f5f4f2;         /* faint off-white mat behind media / cards */
+  --text:#222221;          /* near-black warm charcoal - primary ink */
+  --muted:#6a6967;         /* secondary warm grey */
+  --ink-soft:#3a3a38;      /* body copy ink, a touch softer than primary */
+  --accent:#1c1c1b;        /* in a monochrome system the "accent" is confident black ink */
+  --line:#e3e1dc;          /* hairline rules / borders */
+  --line-strong:#c4c1ba;   /* slightly heavier rule where structure must read */
+  --radius:2px;            /* near-square, editorial - not pills/blobs */
+  --max:1080px;
+
+  /* Type tokens */
+  --mono:"Courier Prime","Courier New",Courier,ui-monospace,monospace;
+  --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",Roboto,system-ui,sans-serif;
+
+  /* Light "glass" chips so chrome stays legible over bright OR dark video frames */
+  --chip-bg:rgba(255,255,255,.82);
+  --chip-text:#1c1c1b;
+  --chip-line:rgba(0,0,0,.08);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:1.62;
+  letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
+
+section{padding:96px 28px}
+
+/* ---- Labels / chrome: monospace, small, precise, generous whitespace ---- */
+.section-title{
+  font-family:var(--mono); font-weight:500;
+  font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--text);
+  padding-bottom:14px; margin-bottom:40px;
+  border-bottom:1px solid var(--line);
+}
+.eyebrow{
+  font-family:var(--mono); font-weight:500;
+  font-size:13px; letter-spacing:.02em; text-transform:none;
+  color:var(--muted); margin-bottom:12px;
+  display:inline-flex; align-items:center;
+}
+
+/* ---- Buttons: square mono tags, monochrome ---- */
+.btn{
+  display:inline-block; padding:13px 22px;
+  border-radius:var(--radius);
+  font-family:var(--mono); font-weight:500; font-size:14px; letter-spacing:.01em;
+  text-decoration:none;
+  transition:transform .15s ease,background-color .15s ease,color .15s ease,border-color .15s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--accent); color:#fff; border:1px solid var(--accent)}
+.btn-primary:hover{background:#000; border-color:#000}
+.btn-ghost{border:1px solid var(--line-strong); color:var(--text); background:transparent}
+.btn-ghost:hover{border-color:var(--text)}
+
+/* ---- Nav ---- */
+.nav{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+.logo{font-family:var(--mono); font-weight:700; font-size:16px; letter-spacing:-.01em; color:var(--text)}
+.nav-cta{
+  font-family:var(--mono); font-weight:500; font-size:13px; letter-spacing:.01em;
+  color:var(--text); text-decoration:none;
+  border:1px solid var(--line-strong); padding:8px 16px; border-radius:var(--radius);
+  transition:border-color .15s ease;
+}
+.nav-cta:hover{border-color:var(--text)}
+
+/* ---- Hero ---- */
+.hero{padding:0 28px 48px}
+/* Hero top row: lead text left, circular portrait right */
+.hero-top{display:grid;grid-template-columns:1fr auto;gap:clamp(24px,5vw,64px);align-items:center}
+.hero-portrait{justify-self:end}
+.hero-portrait img{width:clamp(140px,14vw,190px);aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line-strong);background:var(--panel);display:block;filter:grayscale(1)}
+@media(max-width:760px){ .hero-top{grid-template-columns:1fr} .hero-portrait{order:-1;justify-self:start} .hero-portrait img{width:84px} }
+.hero-inner{max-width:var(--max);margin:0 auto;padding:48px 0 12px}
+.hero h1{
+  font-family:var(--mono); font-weight:700;
+  font-size:clamp(32px,6vw,64px); line-height:1.06; letter-spacing:-.02em;
+  max-width:18ch; color:var(--text);
+}
+/* emphasis via a subtle typeset underline, not a colour pop */
+.hero h1 span{
+  color:var(--text);
+  text-decoration:underline; text-decoration-thickness:2px;
+  text-underline-offset:6px; text-decoration-color:var(--line-strong);
+}
+.sub{
+  font-family:var(--sans); font-weight:300;
+  color:var(--ink-soft); font-size:clamp(16px,2vw,20px); line-height:1.55;
+  margin:24px 0 30px; max-width:54ch;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+
+/* ---- Media cards (video) - dark videos framed intentionally on a light page ---- */
+.media-card{
+  position:relative; background:var(--panel);
+  border:1px solid var(--line-strong);
+  border-radius:var(--radius); overflow:hidden;
+  aspect-ratio:9/16; max-width:340px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+.media-card video{
+  width:100%; height:100%; object-fit:cover; display:block;
+  background:linear-gradient(135deg,#ecebe8,#dfddd8); /* light mat before load */
+}
+/* Light glass chips: legible over both bright and dark video frames */
+.view-badge{
+  position:absolute; left:10px; bottom:10px;
+  font-family:var(--mono); font-weight:500; font-size:12px; letter-spacing:.01em;
+  background:var(--chip-bg); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  color:var(--chip-text); border:1px solid var(--chip-line);
+  padding:5px 10px; border-radius:var(--radius);
+  box-shadow:0 1px 2px rgba(0,0,0,.18);
+}
+.mute-toggle{
+  position:absolute; right:10px; bottom:10px;
+  background:var(--chip-bg); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--chip-line); color:var(--chip-text);
+  width:34px; height:34px; border-radius:var(--radius); cursor:pointer;
+  font-size:14px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 1px 2px rgba(0,0,0,.18);
+  transition:background-color .15s ease;
+}
+.mute-toggle:hover{background:rgba(255,255,255,.95)}
+
+/* ---- Work ---- */
+.work{max-width:var(--max);margin:0 auto}
+.case{
+  display:grid; grid-template-columns:340px 1fr; gap:48px; align-items:center;
+  margin-bottom:0; padding:56px 0; border-bottom:1px solid var(--line);
+}
+.case:last-of-type{border-bottom:0}
+.case.reverse{grid-template-columns:1fr 340px}
+.case.reverse .media-card{order:2}
+/* Cine case: a landscape film/interview gets a stacked, full-width layout (not the narrow portrait column) */
+.case.cine{grid-template-columns:1fr;gap:24px}
+.case.cine .media-card{order:0;width:100%}
+.case.cine .media-card.wide{max-width:760px}
+.case-copy h3{
+  font-family:var(--mono); font-weight:600;
+  font-size:clamp(22px,3vw,30px); line-height:1.12; letter-spacing:-.015em;
+  margin:8px 0 16px; color:var(--text);
+}
+.case-copy h3 span{color:var(--text)}
+.case-copy p{font-family:var(--sans); font-weight:300; color:var(--ink-soft); max-width:50ch; line-height:1.62}
+.case-copy strong{font-weight:600; color:var(--text)}
+.viral-strip{display:flex;gap:20px;flex-wrap:wrap}
+.viral-strip .media-card.wide{flex:1 1 360px;max-width:520px}
+
+/* ---- Stats: monochrome, big mono numerals between hairline rules ---- */
+.stats{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  padding:40px 0;
+}
+.stat{text-align:center}
+.stat .num{
+  display:block; font-family:var(--mono); font-weight:700;
+  font-size:clamp(30px,5vw,50px); letter-spacing:-.03em; line-height:1;
+  color:var(--text);
+  font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1;
+}
+.stat .label{
+  font-family:var(--mono); font-weight:400;
+  color:var(--muted); font-size:12px; letter-spacing:.01em;
+  margin-top:12px; display:block; line-height:1.45;
+}
+
+/* ---- About ---- */
+.about{max-width:760px;margin:0 auto}
+.about p{font-family:var(--sans); font-weight:300; font-size:clamp(18px,2.2vw,22px); line-height:1.6; color:var(--ink-soft)}
+.about p + p{margin-top:1.1em}
+.about p span,.about p strong{font-weight:600; color:var(--text)}
+.headshot{width:120px;height:120px;border-radius:var(--radius);object-fit:cover;margin-bottom:24px;border:1px solid var(--line-strong);filter:grayscale(1)}
+
+/* ---- Contact ---- */
+.contact{max-width:var(--max);margin:0 auto;text-align:center}
+.contact h2{font-family:var(--mono); font-weight:700; font-size:clamp(28px,4vw,44px); line-height:1.1; letter-spacing:-.02em; margin-bottom:30px; color:var(--text)}
+.contact-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.footer-note{font-family:var(--mono); color:var(--muted); font-size:12px; letter-spacing:.02em; margin-top:52px}
+
+/* ---- Landscape cinematic hero + wide media cards ---- */
+.media-card.wide{aspect-ratio:16/9;max-width:none}
+.hero-cine{margin:8px auto 0;max-width:var(--max);width:100%;aspect-ratio:16/9}
+
+/* ---- Section intro (eyebrow + lead line) ---- */
+.section-lead{max-width:var(--max);margin:0 auto 32px}
+.section-lead p{font-family:var(--sans); font-weight:300; color:var(--ink-soft); font-size:clamp(15px,2vw,18px); max-width:60ch}
+
+/* ---- Insider-edge band (MMU) - ruled, left-marked, no gradient blob ---- */
+.insider{
+  max-width:var(--max); margin:0 auto;
+  border:1px solid var(--line-strong); border-left:3px solid var(--accent);
+  border-radius:var(--radius); padding:26px 28px; background:var(--panel);
+}
+.insider p{font-family:var(--mono); font-size:clamp(18px,2.6vw,25px); font-weight:600; line-height:1.25; letter-spacing:-.01em; color:var(--text)}
+.insider .sub{font-family:var(--sans); color:var(--muted); font-size:15px; font-weight:300; margin-top:10px}
+
+/* ---- Platforms strip - small mono tags ---- */
+.platforms{max-width:var(--max);margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center}
+.platforms .platform{font-family:var(--mono); font-size:13px; letter-spacing:.01em; color:var(--text); border:1px solid var(--line-strong); padding:8px 15px; border-radius:var(--radius); background:transparent}
+.platforms-note{max-width:var(--max);margin:14px auto 0;font-family:var(--mono); color:var(--muted); font-size:12px}
+
+/* ---- How I work strip - hairline top-ruled steps (airy grid, robust to item count) ---- */
+.howiwork{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.howiwork .step{
+  background:transparent;
+  border:1px solid var(--line);
+  border-top:2px solid var(--text);
+  border-radius:var(--radius);
+  padding:22px 18px;
+}
+.howiwork .step .n{font-family:var(--mono); font-size:12px; color:var(--muted); font-weight:700; letter-spacing:.06em}
+.howiwork .step h3{font-family:var(--mono); font-size:15px; margin:12px 0 8px; letter-spacing:-.005em; font-weight:600; color:var(--text)}
+.howiwork .step p{font-family:var(--sans); font-weight:300; color:var(--muted); font-size:13px; line-height:1.55}
+
+/* ---- Callout stats - mono numerals, tabular so count-up never jitters ---- */
+.callout{max-width:var(--max);margin:0 auto;display:flex;gap:16px;flex-wrap:wrap}
+.callout .c{flex:1 1 200px;background:var(--panel);border:1px solid var(--line-strong);border-radius:var(--radius);padding:24px}
+.callout .c .big{font-family:var(--mono); font-size:clamp(26px,4vw,40px); font-weight:700; color:var(--text); display:block; letter-spacing:-.03em; line-height:1; font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1}
+.callout .c .lab{font-family:var(--sans); font-weight:300; color:var(--muted); font-size:14px; line-height:1.5; display:block; margin-top:12px}
+
+/* ---- Brand & tone line ---- */
+.brandline{max-width:var(--max);margin:20px auto 0;font-family:var(--mono); color:var(--muted); font-size:14px}
+.brandline strong{color:var(--text); font-weight:600}
+
+/* ---- Stills gallery - hairline-framed plates ---- */
+.stills{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stills img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line-strong);display:block}
+
+/* ---- Proof / honesty captions ---- */
+.proof-note{font-family:var(--mono); color:#aeaca7; font-size:12px; letter-spacing:.02em; opacity:1; margin-top:12px}
+.case-copy .proof-note{margin-top:16px}
+
+/* =====================================================================
+   MMU build: calmer, institutional. Subtle TONAL shift only - no bright
+   accent in this monochrome system. Cooler/softer ink, lighter rules,
+   lighter display weights.
+   ===================================================================== */
+body.mmu{
+  --bg:#fcfcfb;
+  --panel:#f3f3f2;
+  --text:#2a2e33;          /* cooler blue-grey charcoal */
+  --ink-soft:#41464c;
+  --muted:#666b71;         /* AA-safe on #fcfcfb */
+  --accent:#2a2e33;        /* tonal, not a colour */
+  --line:#e7e7e6;
+  --line-strong:#cbcdcf;
+}
+body.mmu .btn-primary{background:var(--accent);color:#fcfcfb;border-color:var(--accent)}
+body.mmu .btn-primary:hover{background:#1f2226;border-color:#1f2226}
+body.mmu .hero h1{font-weight:600; letter-spacing:-.018em; max-width:24ch; font-size:clamp(28px,5vw,52px)}
+body.mmu .hero h1 span{text-decoration-color:var(--line-strong)}
+body.mmu .case-copy h3{font-weight:500}
+body.mmu .contact h2{font-weight:600}
+body.mmu .insider p{font-weight:500}
+
+/* ---- Mobile ---- */
+@media(max-width:760px){
+  section{padding:64px 20px}
+  .nav{padding:20px 0}
+  .hero{padding:0 20px 40px}
+  .hero-inner{padding:36px 0 8px}
+  .case,.case.reverse{grid-template-columns:1fr;gap:24px;padding:44px 0}
+  .case.reverse .media-card{order:0}
+  .media-card{max-width:100%}
+  .stats{grid-template-columns:1fr 1fr;gap:40px 20px;padding:36px 0}
+  .stat{padding:4px 2px}
+  .stat .label{display:block;min-height:2.6em}
+  .howiwork{grid-template-columns:1fr}
+  .stills{grid-template-columns:1fr}
+  .hero-cine{aspect-ratio:9/16;max-height:80vh}
+  /* MMU hero is a true landscape interview film - keep it landscape on phones too */
+  body.mmu .hero-cine{aspect-ratio:16/9;max-height:none}
+}
+
+/* ---- Respect reduced-motion: no scroll smoothing, no hover lift, no fanfare ---- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn,.nav-cta,.btn-primary,.btn-ghost,.mute-toggle{transition:none}
+  .btn:hover{transform:none}
+}
+/* SODA deliberate placeholder card (no real asset yet) - reads intentional, not broken */
+.placeholder-card{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:24px;height:100%;background:var(--panel)}
+.placeholder-card .ph-k{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.placeholder-card .ph-t{font-family:var(--mono);font-size:15px;color:var(--text);max-width:26ch;line-height:1.45}
+
+/* Case-study figures: rising mono numerals under each case */
+.case-figures{display:flex;flex-wrap:wrap;gap:26px 34px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.case-figures .fig{display:flex;flex-direction:column}
+.case-figures .fig-n{font-family:var(--mono);font-weight:700;font-size:clamp(24px,3.4vw,38px);letter-spacing:-.03em;line-height:1;color:var(--text);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.case-figures .fig-n.fig-text{font-size:clamp(19px,2.4vw,26px);letter-spacing:.04em}
+.case-figures .fig-l{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--muted);margin-top:8px;line-height:1.4;max-width:24ch}
+.case-figures .fig-l a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:3px}
+.case-figures .fig-l a:hover{color:var(--text)}
+
+/* Pop-up gallery + matcha note */
+.popup-gallery{max-width:var(--max);margin:10px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.popup-gallery .pg{position:relative;aspect-ratio:3/4;border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden;background:var(--panel)}
+.popup-gallery .pg>img,.popup-gallery .pg>video{width:100%;height:100%;object-fit:cover;display:block}
+.popup-note{max-width:var(--max);margin:18px auto 0;font-family:var(--mono);color:var(--muted);font-size:13px;line-height:1.5;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.popup-note .pn-n{font-weight:700;color:var(--text);font-size:clamp(20px,2.6vw,30px);letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+
+/* Educator graphic (MMU film series) */
+.edu-graphic{display:inline-flex;align-items:flex-start;gap:13px;margin-top:6px}
+.edu-graphic svg{width:42px;height:42px;stroke:var(--text);stroke-width:1.4;fill:none}
+.edu-graphic .edu-cap{font-family:var(--mono);font-size:12px;color:var(--muted);max-width:18ch;line-height:1.4}
+
+@media(max-width:760px){
+  .popup-gallery{grid-template-columns:1fr}
+  .case-figures{gap:18px 26px}
+}
+
+/* Posters / design showcase (Venture Archives takeover) */
+.posters{max-width:var(--max);margin:10px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.posters img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line-strong);background:var(--panel);display:block}
+@media(max-width:760px){ .posters{grid-template-columns:1fr} }
+
+/* Funnel breakdown: clean text, top to bottom (kicker + figure, tactic, detail), hairline rules */
+.funnel{max-width:var(--max);margin:16px auto 0}
+.funnel .fstage{padding:22px 0;border-top:1px solid var(--line)}
+.funnel .fstage:last-child{border-bottom:1px solid var(--line)}
+.funnel .frow{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.funnel .fk{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.funnel .fp{font-family:var(--mono);font-weight:700;font-size:clamp(20px,2.6vw,28px);letter-spacing:-.01em;color:var(--text);white-space:nowrap}
+.funnel .ft{font-family:var(--mono);font-weight:700;font-size:16px;color:var(--text);letter-spacing:-.01em;margin:10px 0 6px}
+.funnel .fstage p{font-family:var(--sans);font-weight:300;font-size:15px;color:var(--ink-soft);line-height:1.6;max-width:64ch}
+@media(max-width:760px){
+  .funnel .frow{flex-direction:column;gap:4px}
+}
+/* Scroll reveal (fade + rise) for any .reveal element. Funnel stages also cascade via the nth-child delays. Gated on .js so content stays visible if JS fails. */
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+.funnel .fstage:nth-child(1){transition-delay:.12s}
+.funnel .fstage:nth-child(2){transition-delay:.32s}
+.funnel .fstage:nth-child(3){transition-delay:.52s}
+@media(prefers-reduced-motion:reduce){ .js .reveal{opacity:1;transform:none;transition:none} }
+
+/* "The play": the strategy behind each case, shown next to the work */
+.play{font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--muted);margin-top:18px;border-left:2px solid var(--line-strong);padding-left:14px;max-width:52ch}
+.play .play-k{display:block;font-weight:700;color:var(--text);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+
+
+/* Brands I've worked with strip (under hero stats) */
+.brands{max-width:var(--max);margin:44px auto 0;padding:34px 22px 40px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.brands-k{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin-bottom:20px}
+.brands-row{display:flex;align-items:center;justify-content:center;gap:clamp(22px,5vw,56px);flex-wrap:wrap}
+.brands-row .brand{font-family:var(--mono);font-weight:600;font-size:clamp(14px,1.8vw,18px);color:var(--text);letter-spacing:.01em}
+.brands-row .brand-logo{height:30px;width:auto;max-width:230px;object-fit:contain;display:block;opacity:1;filter:brightness(0)}
+.brands-row .brand-logo.is-mmu{height:46px}
+@media(max-width:760px){ .brands-row{gap:18px 26px} .brands-row .brand-logo{height:24px} .brands-row .brand-logo.is-mmu{height:36px} }
+
+/* Brand logo + role in case headers */
+.case-brand{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.case-logo{height:24px;width:auto;max-width:170px;object-fit:contain;display:block}
+.case-logo.is-mmu{height:36px}
+.case-role{font-family:var(--mono);font-size:13px;letter-spacing:.02em;color:var(--muted)}
+.case-role::before{content:"·";margin-right:11px;color:var(--line-strong)}
+
+/* ============================================================
+   MOBILE / iPhone QC fixes (375-430px). Desktop untouched:
+   all inside max-width:760px, plus 3 clamp() floor bumps + proof-note padding.
+   ============================================================ */
+.hero h1{font-size:clamp(34px,8.5vw,64px)}
+body.mmu .hero h1{font-size:clamp(30px,7vw,52px)}
+.proof-note{padding-left:20px;padding-right:20px}
+
+@media(max-width:760px){
+  /* touch targets to 44px+ (signature tap-to-unmute, CTAs, nav) */
+  .mute-toggle{width:44px;height:44px;font-size:16px}
+  .btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;line-height:1.1}
+  .nav-cta{padding:11px 16px;min-height:44px;display:inline-flex;align-items:center}
+  /* hero headlines scale + breathe */
+  .hero h1{max-width:none;letter-spacing:-.03em;line-height:1.04}
+  body.mmu .hero h1{max-width:none;line-height:1.1}
+  /* montage strip explicit full-width collapse */
+  .viral-strip{gap:14px}
+  .viral-strip .media-card.wide{flex:1 1 100%;max-width:100%}
+  /* hero + contact CTAs fill the row, no ragged edge */
+  .hero-actions .btn,.contact-actions .btn{flex:1 1 0;text-align:center}
+  /* pull showreel + primary CTA toward the first fold */
+  .hero-inner{padding:24px 0 8px}
+  .sub{margin:16px 0 22px}
+  .hero-actions{margin-bottom:28px}
+  .hero-cine{max-height:68vh}
+  /* portrait reads intentional, not an avatar */
+  .hero-portrait img{width:120px}
+  .hero-portrait{margin-bottom:8px}
+  /* proof-strip galleries compact (hero shot full-width, two videos below) */
+  .popup-gallery{grid-template-columns:1fr 1fr;gap:10px}
+  .popup-gallery .pg:first-child{grid-column:1 / -1}
+  .stills{grid-template-columns:1fr 1fr;gap:10px}
+  /* tighter vertical rhythm + end band */
+  section{padding:52px 20px}
+  .footer-note{margin-top:36px}
+  /* no dangling middot when role wraps under logo */
+  .case-role::before{display:none}
+  .case-brand{gap:8px 14px}
+  .funnel .fp{white-space:normal}
+}
+/* smallest-phone guard so the headline never overflows */
+@media(max-width:360px){ .hero h1{font-size:30px} }
