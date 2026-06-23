@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../styles.css?v=6" />
+  <link rel="stylesheet" href="../styles.css?v=7" />
 </head>
 <body class="mmu">
 
@@ -68,25 +68,36 @@
   <section class="work" id="work">
     <h2 class="section-title">Selected work</h2>
 
-    <!-- 1: SODA degree show (closest match) -->
-    <article class="case">
-      <div class="media-card">
-        <div class="placeholder-card">
-          <span class="ph-k">SODA · Degree show 2026</span>
-          <span class="ph-t">Social content goes live this summer. Examples will land here as it ships.</span>
-        </div>
+    <!-- 1: SODA degree show -->
+    <article class="case cine">
+      <div class="media-card wide">
+        <video class="autoplay-on-scroll" src="../assets/videos/soda-highlight.mp4" muted loop playsinline preload="none" poster="../assets/images/posters/soda-highlight.jpg"></video>
+        <button class="mute-toggle" aria-label="Unmute video" aria-pressed="false">🔇</button>
+        <span class="view-badge">SODA · YES Bar</span>
       </div>
       <div class="case-copy">
         <div class="case-brand">
           <img src="../assets/images/logos/mmu.png" alt="Manchester Metropolitan University" class="case-logo is-mmu" />
           <span class="case-role">SODA · Department of Art &amp; Performance</span>
         </div>
-        <h3>Degree-show social, planned across the summer</h3>
-        <p>As Social Media Specialist I plan and run social for the 2026 degree show. I work with the Music &amp; Sound Design team to brief, shoot and schedule content on a summer posting calendar, on brand and on time. Coordinating people, approvals and timings is the job.</p>
-        <p class="play"><span class="play-k">The play</span>Plan to the moments that matter, brief and schedule with the team, and keep every post on brand so it ships on time.</p>
-        <p class="proof-note">Published examples will be added here as the degree-show series goes live.</p>
+        <h3>Degree-show social, shot and planned with the students</h3>
+        <p>As Social Media Specialist for SODA I create the degree-show social. I shot <strong>cinematic film</strong> and planned content for the students performing live at <strong>YES Bar</strong>. For the show itself I recorded, interviewed and planned an opportunity for students to showcase their work, briefing and scheduling it on brand.</p>
+        <p class="play"><span class="play-k">The play</span>Capture both the performance and the person behind the work, so the degree show reaches an audience well beyond the room.</p>
       </div>
     </article>
+
+    <!-- SODA student showcase: short subtitled interviews -->
+    <div class="soda-gallery">
+      <div class="pg">
+        <video class="autoplay-on-scroll" src="../assets/videos/soda-student-yong.mp4" muted loop playsinline preload="none" poster="../assets/images/posters/soda-student-yong.jpg"></video>
+        <button class="mute-toggle" aria-label="Unmute video" aria-pressed="false">🔇</button>
+      </div>
+      <div class="pg">
+        <video class="autoplay-on-scroll" src="../assets/videos/soda-student-robin.mp4" muted loop playsinline preload="none" poster="../assets/images/posters/soda-student-robin.jpg"></video>
+        <button class="mute-toggle" aria-label="Unmute video" aria-pressed="false">🔇</button>
+      </div>
+    </div>
+    <p class="popup-note">Student showcase: I recorded and interviewed students so they could share their degree-show work. Captioned for accessibility.</p>
 
     <!-- 2: MMU Think series -->
     <article class="case cine">
