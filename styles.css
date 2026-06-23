@@ -445,3 +445,10 @@ body.mmu .hero h1{font-size:clamp(30px,7vw,52px)}
 .soda-feature{max-width:var(--max);margin:0 auto;padding:48px 0;border-bottom:1px solid var(--line)}
 .soda-feature .media-card.wide{max-width:820px;margin:0 auto}
 .soda-feature .popup-note{text-align:center;margin-top:14px}
+
+/* SODA student showcase: 2 clips beside the story (MMU) */
+.showcase-block{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr .9fr;gap:clamp(24px,4vw,48px);align-items:center}
+.showcase-block .soda-gallery{max-width:none;margin:0}
+@media(max-width:760px){ .showcase-block{grid-template-columns:1fr;gap:18px} }
+/* MMU hero: graduation photo in colour, framed as a portrait */
+body.mmu .hero-portrait img{filter:none;width:clamp(150px,18vw,240px);aspect-ratio:3/4;object-position:center 28%}
