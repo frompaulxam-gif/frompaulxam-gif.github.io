@@ -437,3 +437,10 @@ body.mmu .hero h1{font-size:clamp(30px,7vw,52px)}
 .hero-filmnote{max-width:64ch;margin:18px auto 0}
 .hero-filmnote p{font-family:var(--sans);font-weight:300;color:var(--ink-soft);line-height:1.6}
 .hero-filmnote .play{margin-top:14px}
+
+/* Interview block: group video left, writing right */
+.interview-block{max-width:var(--max);margin:0 auto;padding:38px 28px 0;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,48px);align-items:center}
+.interview-block .media-card.wide{max-width:none;width:100%}
+/* centred section titles (full-width rule stays) */
+.section-title.mid{text-align:center}
+@media(max-width:760px){ .interview-block{grid-template-columns:1fr;padding:24px 20px 0;gap:18px} }
