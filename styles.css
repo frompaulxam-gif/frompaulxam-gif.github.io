@@ -209,14 +209,10 @@ section{padding:96px 28px}
 .section-lead{max-width:var(--max);margin:0 auto 32px}
 .section-lead p{font-family:var(--sans); font-weight:300; color:var(--ink-soft); font-size:clamp(15px,2vw,18px); max-width:60ch}
 
-/* ---- Insider-edge band (MMU) - ruled, left-marked, no gradient blob ---- */
-.insider{
-  max-width:var(--max); margin:0 auto;
-  border:1px solid var(--line-strong); border-left:3px solid var(--accent);
-  border-radius:var(--radius); padding:26px 28px; background:var(--panel);
-}
-.insider p{font-family:var(--mono); font-size:clamp(18px,2.6vw,25px); font-weight:600; line-height:1.25; letter-spacing:-.01em; color:var(--text)}
-.insider .sub{font-family:var(--sans); color:var(--muted); font-size:15px; font-weight:300; margin-top:10px}
+/* ---- Insider-edge (MMU): a clean centred statement, not a boxed callout ---- */
+.insider{ max-width:760px; margin:0 auto; text-align:center; }
+.insider p{font-family:var(--mono); font-size:clamp(20px,3vw,30px); font-weight:600; line-height:1.22; letter-spacing:-.015em; color:var(--text)}
+.insider .sub{font-family:var(--sans); color:var(--muted); font-size:16px; font-weight:300; margin:12px auto 0; max-width:62ch}
 
 /* ---- Platforms strip - small mono tags ---- */
 .platforms{max-width:var(--max);margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center}
@@ -444,3 +440,8 @@ body.mmu .hero h1{font-size:clamp(30px,7vw,52px)}
 /* centred section titles (full-width rule stays) */
 .section-title.mid{text-align:center}
 @media(max-width:760px){ .interview-block{grid-template-columns:1fr;padding:24px 20px 0;gap:18px} }
+
+/* SODA cinematic highlight, featured on the main site */
+.soda-feature{max-width:var(--max);margin:0 auto;padding:48px 0;border-bottom:1px solid var(--line)}
+.soda-feature .media-card.wide{max-width:820px;margin:0 auto}
+.soda-feature .popup-note{text-align:center;margin-top:14px}
